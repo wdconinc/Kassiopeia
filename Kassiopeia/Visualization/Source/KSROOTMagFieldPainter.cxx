@@ -281,9 +281,9 @@ namespace Kassiopeia
 		                                        }
 						}
 					}
-					else{
-						vismsg ( eError ) << "do not know what to plot, plot=<"<<fPlot<<"> is not defined in KSROOTMagFieldPainter" << eom;
-					}
+                                        else{
+                                                vismsg ( eError ) << "do not know what to plot, plot=<"<<fPlot<<"> is not defined in KSROOTMagFieldPainter" << eom;
+                                        }
 				}
 			}
 		}
