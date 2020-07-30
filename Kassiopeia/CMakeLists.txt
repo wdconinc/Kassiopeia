@@ -13,7 +13,7 @@ endif()
 # Kassiopeia version
 set( MODULE_VERSION_MAJOR 3 )
 set( MODULE_VERSION_MINOR 7 )
-set( MODULE_VERSION_PATCH 3 )
+set( MODULE_VERSION_PATCH 4 )
 set( MODULE_VERSION "${MODULE_VERSION_MAJOR}.${MODULE_VERSION_MINOR}.${MODULE_VERSION_PATCH}" )
 
 #project( Kassiopeia VERSION ${MODULE_VERSION} )
@@ -43,7 +43,12 @@ endif()
 # external dependencies: boost
 if( Kassiopeia_USE_BOOST )
     find_package( Boost 1.43.0 COMPONENTS filesystem REQUIRED )
-    kasper_external_include_directories( ${Boost_INCLUDE_DIRS} )
+    if( Boost_INCLUDE_DIR )
+        kasper_external_include_directories( ${Boost_INCLUDE_DIR} )
+        list(APPEND EXTERNAL_LIBRARIES ${Boost_LIBRARIES} )
+    else()
+        list(APPEND EXTERNAL_LIBRARIES Boost::headers Boost::filesystem )
+    endif()
     add_definitions( -DKassiopeia_USE_BOOST )
 endif()
 
