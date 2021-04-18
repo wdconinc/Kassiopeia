@@ -10,6 +10,8 @@ set( APPLICATIONS_FIELDS_BASENAMES
     SimpleMagneticFieldCalculatorOverXYplane
     SimpleMagneticFieldCalculatorFromFile
     SimpleMagneticFieldCalculatorSpeedTest
+
+    SimpleMagneticGradientCalculator
 )
 
 set( APPLICATIONS_FIELDS_LIBRARIES
@@ -45,7 +47,7 @@ set( APPLICATIONS_FIELDS_PATH
 kasper_internal_include_directories()
 foreach( BASENAME ${APPLICATIONS_FIELDS_BASENAMES} )
 	add_executable( ${BASENAME} ${APPLICATIONS_FIELDS_PATH}/${BASENAME}.cxx )
-	target_link_libraries( ${BASENAME} ${APPLICATIONS_FIELDS_LIBRARIES} )
+	target_link_libraries( ${BASENAME} ${APPLICATIONS_FIELDS_LIBRARIES} ${EXTERNAL_LIBRARIES} )
 endforeach( BASENAME )
 
 kasper_install_executables( ${APPLICATIONS_FIELDS_BASENAMES} )
